@@ -24,7 +24,7 @@
         </dependency>
 	</dependencies>
 	<scm>
-		<connection>scm:git:ssh://git@github.com/SoffidIAM/plugin-scim.git</connection>
+		<connection>scm:git:ssh://git@github.com/SoffidIAM/plugin-aws.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 	<licenses>
