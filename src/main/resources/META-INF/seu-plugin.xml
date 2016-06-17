@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<seuServerPlugin xmlns="http://seu.sourceforge.net/schema/serverplugin"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://seu.sourceforge.net/schema/ServerPlugin.xsd">
+	<name>Amazon WS plugin</name>
+	<version>${pom.version}</version>
+	<agent>
+		<name>Amazon WS</name>
+		<javaClass>com.soffid.iam.sync.agent.aws.AWSAgent</javaClass>
+		<userInterface>AWSAgent.zul</userInterface>
+		<enableAccessControl>false</enableAccessControl>
+		<authoritativeSource>false</authoritativeSource>
+		<enableAttributeMapping>true</enableAttributeMapping>
+
+		<object systemObject="user" soffidObject="user">
+			<mapping
+				soffidAttribute='accountName'
+				systemAttribute='userName' 
+				direction="inout" />
+			<mapping soffidAttribute='"/"+primaryGroup+"/"' 
+				systemAttribute='path'
+				direction="out" />
+		</object>
+
+		<object systemObject="account" soffidObject="account">
+			<mapping
+				soffidAttribute='accountName'
+				systemAttribute='userName' 
+				direction="inout" />
+			<mapping soffidAttribute='"/sharedAccounts/"' 
+				systemAttribute='path'
+				direction="out" />
+		</object>
+
+		<object systemObject="role" soffidObject="role">
+			<mapping
+				soffidAttribute='name'
+				systemAttribute='groupName' 
+				direction="inout" />
+			<mapping
+				soffidAttribute='description'
+				systemAttribute='groupName' 
+				direction="in" />
+			<mapping soffidAttribute='"/groups/"' 
+				systemAttribute='path'
+				direction="out" />
+		</object>
+
+
+	</agent>
+</seuServerPlugin>
