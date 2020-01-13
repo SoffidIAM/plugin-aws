@@ -10,7 +10,7 @@
 	<artifactId>aws-plugin</artifactId>
 	<packaging>jar</packaging>
 	<name>Amazon Web Services plugin</name>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>com.soffid.iam.sync</groupId>
@@ -24,7 +24,7 @@
         </dependency>
 	</dependencies>
 	<scm>
-		<connection>scm:git:ssh://git@github.com/SoffidIAM/plugin-scim.git</connection>
+		<connection>scm:git:ssh://git@github.com/SoffidIAM/plugin-aws.git</connection>
 		<tag>HEAD</tag>
 	</scm>
 	<licenses>
