@@ -10,7 +10,7 @@
 	<artifactId>aws-plugin</artifactId>
 	<packaging>jar</packaging>
 	<name>Amazon Web Services plugin</name>
-	<version>1.1.0</version>
+	<version>1.1.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>com.soffid.iam.sync</groupId>
