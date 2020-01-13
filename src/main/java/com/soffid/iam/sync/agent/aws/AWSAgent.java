@@ -212,6 +212,8 @@ public class AWSAgent extends Agent implements ExtensibleObjectMgr, UserMgr, Rec
 				createUserRequest.setUserName(userName);
 				createUserRequest.setPath(vom.toSingleString(obj.getAttribute("path")));
 				client.createUser(createUserRequest);
+				if (! obj.containsKey("password") && obj.containsKey("oldPassword"))
+					obj.put("password", obj.get("oldPassword"));
 				setPassword = true;
 			}
 		}
@@ -645,10 +647,10 @@ public class AWSAgent extends Agent implements ExtensibleObjectMgr, UserMgr, Rec
 					if (objectTranslator.evalCondition(sourceObject, mapping)) {
 						ExtensibleObject obj = objectTranslator.generateObject(sourceObject, mapping);
 						Password password = getServer().getOrGenerateUserPassword(acc.getName(), getCodi());
-						obj.setAttribute("password", password.getPassword());
+						obj.setAttribute("oldPassword", password.getPassword());
 						obj.setAttribute("mustChange", Boolean.FALSE);
 						if (obj != null)
-							updateUserObject(sourceObject, obj, true);
+							updateUserObject(sourceObject, obj, obj.getAttribute("password") != null);
 						updateUserObjectGroups(acc);
 					} else {
 						removeScimUser(acc.getName());
@@ -671,10 +673,10 @@ public class AWSAgent extends Agent implements ExtensibleObjectMgr, UserMgr, Rec
 					if (objectTranslator.evalCondition(sourceObject, mapping)) {
 						ExtensibleObject obj = objectTranslator.generateObject(sourceObject, mapping);
 						if (obj != null) {
-							obj.setAttribute("password",
+							obj.setAttribute("oldPassword",
 									getServer().getOrGenerateUserPassword(acc.getName(), getCodi()));
 							obj.setAttribute("mustChange", Boolean.FALSE);
-							updateUserObject(sourceObject, obj, false);
+							updateUserObject(sourceObject, obj,  obj.getAttribute("password") != null);
 							updateUserObjectGroups(acc);
 						}
 					} else {
