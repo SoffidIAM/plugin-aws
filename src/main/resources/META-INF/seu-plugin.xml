@@ -12,6 +12,7 @@
 		<enableAccessControl>false</enableAccessControl>
 		<authoritativeSource>false</authoritativeSource>
 		<enableAttributeMapping>true</enableAttributeMapping>
+		<enableObjectTriggers>true</enableObjectTriggers>
 
 		<object systemObject="user" soffidObject="user">
 			<mapping
